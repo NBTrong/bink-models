@@ -7,7 +7,7 @@ from transformers import pipeline
 app = FastAPI()
 
 
-@serve.deployment(num_replicas=1)
+@serve.deployment
 @serve.ingress(app)
 class Mistral:
     def __init__(self):
