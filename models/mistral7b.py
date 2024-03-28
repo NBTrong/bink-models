@@ -22,7 +22,6 @@ class Mistral:
       # Post-process output to return only the generated text
       generated_text = model_output[0]["generated_text"]
 
-      return {"generated_text": generated_text}
-
+      return generated_text
 
 app = Mistral.bind()
