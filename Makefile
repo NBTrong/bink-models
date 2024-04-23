@@ -1,6 +1,7 @@
 # Python command
 pyenv install 3.9.18
-pyenv global 3.10.12
+pyenv global 3.9.18
+eval "$(pyenv init --path)"
 python3 -m venv bink-env
 source bink-env/bin/activate
 deactivate
@@ -21,7 +22,7 @@ docker push myusername/myrepo:v1.0
 docker rmi $(docker images -f "dangling=true" -q)
 
 # Worker command
-docker run -it -d --name "ray_container" --network=host --rm --cap-add=NET_ADMIN --cap-add=SYS_ADMIN --device=/dev/net/tun --ulimit nofile=65536:65536 rayproject/ray:latest-cpu bash
+docker run -it -d --name "ray_container" --network=host --rm --cap-add=NET_ADMIN --cap-add=SYS_ADMIN --device=/dev/net/tun --ulimit nofile=65536:65536 nbtrong/mray:v1 bash
 docker exec -it ray_container bash
 sudo apt update
 sudo apt install net-tools

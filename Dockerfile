@@ -1,9 +1,19 @@
 FROM rayproject/ray:latest-cpu
 
-RUN sudo apt update
-RUN sudo apt install net-tools
-RUN sudo apt install -y iputils-ping
-RUN sudo apt install telnet
-RUN sudo apt install -y curl
-RUN sudo curl -s https://install.zerotier.com | sudo bash
+RUN sudo apt-get update && \
+    sudo apt-get install -y --no-install-recommends \
+        net-tools \
+        iputils-ping \
+        telnet \
+        curl && \
+    sudo rm -rf /var/lib/apt/lists/* && \
+    sudo curl -s https://install.zerotier.com | sudo bash
 
+COPY entrypoint.sh /entrypoint.sh
+
+COPY . .
+
+# Make the entrypoint script executable
+RUN sudo chmod +x /entrypoint.sh
+
+CMD ["/entrypoint.sh"]
