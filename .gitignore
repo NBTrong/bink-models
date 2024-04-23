@@ -35,4 +35,4 @@ MANIFEST
 
 bink-env
 key
-mac-key.pem
+*.pem

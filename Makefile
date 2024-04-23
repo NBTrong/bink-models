@@ -20,9 +20,9 @@ docker tag myimage:v1.0 myusername/myrepo:v1.0
 docker login
 docker push myusername/myrepo:v1.0
 docker rmi $(docker images -f "dangling=true" -q)
+docker run -it -d --name "ray_container" --network=host --rm --cap-add=NET_ADMIN --cap-add=SYS_ADMIN --device=/dev/net/tun --ulimit nofile=65536:65536 alexx888/bink-ai:1.2 && docker logs -f ray_container
 
 # Worker command
-docker run -it -d --name "ray_container" --network=host --rm --cap-add=NET_ADMIN --cap-add=SYS_ADMIN --device=/dev/net/tun --ulimit nofile=65536:65536 nbtrong/mray:v1 bash
 docker exec -it ray_container bash
 sudo apt update
 sudo apt install net-tools
