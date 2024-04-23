@@ -40,6 +40,6 @@ export NODE_IP_ADDRESS=$IP
 echo "Node IP Address: $NODE_IP_ADDRESS" | tee -a $LOG_FILE
 
 # Connect to the ray cluster
-ray start --address=34.222.99.58:6379 --object-manager-port=8076 --node-ip-address=$NODE_IP_ADDRESS
+ray start --address=34.222.99.58:6379 --object-manager-port=8076 --node-ip-address=$NODE_IP_ADDRESS --raylet-socket-name=batrong
 
 tail -f /dev/null

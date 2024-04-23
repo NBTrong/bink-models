@@ -29,7 +29,6 @@ def authorize_network_members(members):
           }
       }
       print(f"Authorizing member with ID {member_id}")
-      print(member, member["config"]["authorized"])
       response = requests.post(f"{url}/{member_id}", json=payload, headers=headers)
       print(f"Authorized member with ID {member_id}")
       print(response.json())
@@ -37,5 +36,3 @@ def authorize_network_members(members):
 members = get_network_members()
 
 authorize_network_members(members)
-
-members = get_network_members()
